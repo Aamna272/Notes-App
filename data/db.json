@@ -1,0 +1,29 @@
+{
+  "notes": [
+    {
+      "title": "My First Note",
+      "body": "I am building a notes app with react",
+      "id": "1"
+    },
+    {
+      "title": "Go for a hike",
+      "body": "It's my first hike this year",
+      "id": "2"
+    },
+    {
+      "id": "abd4",
+      "title": "dfv",
+      "body": "erfvg"
+    },
+    {
+      "id": "f756",
+      "title": "weoiudc",
+      "body": "eckjd njr"
+    },
+    {
+      "id": "2a1a",
+      "title": "wdcs",
+      "body": "wee"
+    }
+  ]
+}

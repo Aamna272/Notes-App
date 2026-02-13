@@ -19,17 +19,12 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow-y: auto;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }
