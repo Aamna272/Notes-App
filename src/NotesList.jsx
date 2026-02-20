@@ -10,7 +10,7 @@ export default function NotesList({ notes }) {
             key={note.id}
           >
             <h1>{note.title}</h1>
-            <h1>Last edited :</h1>
+            <h1>Last edited :{notes.id}</h1>
           </div>
         ))}
       </div>

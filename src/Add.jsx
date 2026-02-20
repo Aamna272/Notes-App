@@ -9,16 +9,17 @@ export default function Add() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    const note = { title, body };
+    const newNote = {
+      id: Date.now(),
+      title,
+      body,
+    };
+    const existingNotes = JSON.parse(localStorage.getItem("notes")) || [];
 
-    fetch("http://localhost:8000/notes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(note),
-    }).then(() => {
-      console.log("new note added");
-      navigate("/");
-    });
+    const updatedNotes = [...existingNotes, newNote];
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+    console.log("New note added (LocalStorage)");
+    navigate("/");
   };
   return (
     <div className="add">

@@ -15,10 +15,6 @@ function App() {
         </div>
       </div>
     </BrowserRouter>
-    // <>
-    //   <Navbar />
-    //   <Home />
-    // </>
   );
 }
 
