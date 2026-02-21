@@ -2,23 +2,18 @@ import React, { use } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { NotesContext } from "./NotesContext";
 
 export default function Add() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const navigate = useNavigate();
+
+  const { addNote } = useContext(NotesContext);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newNote = {
-      id: Date.now(),
-      title,
-      body,
-    };
-    const existingNotes = JSON.parse(localStorage.getItem("notes")) || [];
-
-    const updatedNotes = [...existingNotes, newNote];
-    localStorage.setItem("notes", JSON.stringify(updatedNotes));
-    console.log("New note added (LocalStorage)");
+    addNote(title, body);
     navigate("/");
   };
   return (

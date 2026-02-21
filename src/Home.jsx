@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import ResultsHeader from "./ResultsHeader";
 import NotesList from "./NotesList";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { NotesContext } from "./NotesContext";
 export default function Home() {
-  const [notes, setNotes] = useState([]);
-
-  useEffect(() => {
-    const savedNotes = JSON.parse(localStorage.getItem("notes")) || [];
-    setNotes(savedNotes);
-  });
+  const { notes } = useContext(NotesContext);
   return (
     <div className="home">
       <ResultsHeader />
