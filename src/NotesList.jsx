@@ -1,17 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function NotesList({ notes }) {
   return (
     <div>
-      <div className=" max-w-175 flex w-full flex-col gap-2.5 mx-auto mt-5">
+      <div className="max-w-175 flex w-full flex-col gap-2.5 mx-auto mt-5">
         {notes.map((note) => (
-          <div
-            className=" flex cursor-pointer flex-col gap-2.5  bg-[#F7F7F7] p-2.5 max-"
+          <Link
+            to={`/notes/${note.id}`} // ✅ correct route
             key={note.id}
+            className="block"
           >
-            <h1>{note.title}</h1>
-            <h1>Last edited :{note.id}</h1>
-          </div>
+            <div className="flex cursor-pointer flex-col gap-2.5 bg-[#F7F7F7] p-2.5 rounded-lg hover:bg-[#eaeaea] transition">
+              <h1 className="text-[18px] font-semibold">{note.title}</h1>
+              <p className="text-[14px] text-gray-500">Click to view / edit</p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

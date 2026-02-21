@@ -9,7 +9,6 @@ export default function Add() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const navigate = useNavigate();
-
   const { addNote } = useContext(NotesContext);
   const handleSubmit = (e) => {
     e.preventDefault();
