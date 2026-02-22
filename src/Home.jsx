@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ResultsHeader from "./ResultsHeader";
 import NotesList from "./NotesList";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
@@ -8,8 +7,6 @@ export default function Home() {
   const { notes } = useContext(NotesContext);
   return (
     <div className="home">
-      <ResultsHeader />
-
       {notes.length === 0 && (
         <div className="flex justify-center items-center">
           No notes yet. Add one!
