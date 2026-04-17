@@ -1,22 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { NotesContext } from "./NotesContext";
+import { findNoteById } from "./noteHelpers";
+
 export default function NoteDetails() {
   const { notes, updateNote, deleteNote } = useContext(NotesContext);
 
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
   const { id } = useParams();
+  const note = findNoteById(notes, id);
+  const [title, setTitle] = useState(() => note?.title ?? "");
+  const [body, setBody] = useState(() => note?.body ?? "");
   const navigate = useNavigate();
 
-  const note = notes.find((n) => n.id === Number(id));
-
-  useEffect(() => {
-    if (note) {
-      setTitle(note.title);
-      setBody(note.body);
-    }
-  }, [note]);
+  if (!note) {
+    return <div>Note not found</div>;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +36,7 @@ export default function NoteDetails() {
               Home
             </p>
           </Link>
-          <h1 className="text-18px"></h1>
+          <h1 className="text-18px">Last Edited : {note.updatedAt}</h1>
         </div>
       </div>
       <div className="flex mx-auto flex-col max-w-175 w-full gap-4 mt-5 p-4">
@@ -53,7 +51,6 @@ export default function NoteDetails() {
               onChange={(e) => setTitle(e.target.value)}
             />
             <textarea
-              required
               placeholder="Type your Notes body"
               name=""
               id=""
